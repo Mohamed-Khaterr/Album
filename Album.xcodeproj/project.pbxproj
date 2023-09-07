@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		01608F2B2AAA6651001410D1 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01608F2A2AAA6651001410D1 /* AlbumDetailsViewController.swift */; };
+		01608F322AAA6ACD001410D1 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 01608F312AAA6ACD001410D1 /* CombineMoya */; };
+		01608F342AAA6ACD001410D1 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 01608F332AAA6ACD001410D1 /* Moya */; };
+		01608F372AAA6B28001410D1 /* CombineCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 01608F362AAA6B28001410D1 /* CombineCocoa */; };
+		01608F3A2AAA6B4B001410D1 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 01608F392AAA6B4B001410D1 /* SDWebImage */; };
 		0192C1282AAA341F00059FDF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0192C1272AAA341F00059FDF /* AppDelegate.swift */; };
 		0192C12A2AAA341F00059FDF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0192C1292AAA341F00059FDF /* SceneDelegate.swift */; };
 		0192C12C2AAA341F00059FDF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0192C12B2AAA341F00059FDF /* ProfileViewController.swift */; };
@@ -33,6 +37,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01608F342AAA6ACD001410D1 /* Moya in Frameworks */,
+				01608F372AAA6B28001410D1 /* CombineCocoa in Frameworks */,
+				01608F3A2AAA6B4B001410D1 /* SDWebImage in Frameworks */,
+				01608F322AAA6ACD001410D1 /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,6 +174,12 @@
 			dependencies = (
 			);
 			name = Album;
+			packageProductDependencies = (
+				01608F312AAA6ACD001410D1 /* CombineMoya */,
+				01608F332AAA6ACD001410D1 /* Moya */,
+				01608F362AAA6B28001410D1 /* CombineCocoa */,
+				01608F392AAA6B4B001410D1 /* SDWebImage */,
+			);
 			productName = Album;
 			productReference = 0192C1242AAA341F00059FDF /* Album.app */;
 			productType = "com.apple.product-type.application";
@@ -194,6 +208,11 @@
 				Base,
 			);
 			mainGroup = 0192C11B2AAA341F00059FDF;
+			packageReferences = (
+				01608F302AAA6ACD001410D1 /* XCRemoteSwiftPackageReference "Moya" */,
+				01608F352AAA6B28001410D1 /* XCRemoteSwiftPackageReference "CombineCocoa" */,
+				01608F382AAA6B4B001410D1 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 0192C1252AAA341F00059FDF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -442,6 +461,56 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		01608F302AAA6ACD001410D1 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.0;
+			};
+		};
+		01608F352AAA6B28001410D1 /* XCRemoteSwiftPackageReference "CombineCocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/CombineCommunity/CombineCocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.1;
+			};
+		};
+		01608F382AAA6B4B001410D1 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		01608F312AAA6ACD001410D1 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01608F302AAA6ACD001410D1 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		01608F332AAA6ACD001410D1 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01608F302AAA6ACD001410D1 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		01608F362AAA6B28001410D1 /* CombineCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01608F352AAA6B28001410D1 /* XCRemoteSwiftPackageReference "CombineCocoa" */;
+			productName = CombineCocoa;
+		};
+		01608F392AAA6B4B001410D1 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01608F382AAA6B4B001410D1 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0192C11C2AAA341F00059FDF /* Project object */;
 }
