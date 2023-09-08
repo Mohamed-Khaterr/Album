@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import Moya
 
 
@@ -13,48 +14,13 @@ enum JsonPlaceholderAPI {
     case userInfo(id: Int)
     case albumes(userId: Int)
     case photos(albumId: Int)
-    
-    /// API Provider
-    private var provider: MoyaProvider<Self> {
-        return MoyaProvider<Self>()
-    }
-    
-    
-    /// async function to Send Request to JSON Placeholder API
-    /// - Returns: Response Data
-    /// - Throws: Error from Decoding Data or Error from server
-    /// - Parameters:
-    ///   - ofType: Repsonse Data
-    func getData<ResponseType: Codable>(ofType type: ResponseType.Type) async throws -> ResponseType {
-        // Converting Closure to Swift Modern Concurrency
-        return try await withCheckedThrowingContinuation { continuation in
-            // Send Request of selected case
-            provider.request(self) { result in
-                switch result {
-                case .success(let response):
-                    do {
-                        let decodedData = try JSONDecoder().decode(type, from: response.data)
-                        continuation.resume(returning: decodedData)
-                    } catch {
-                        continuation.resume(throwing: error)
-                    }
-                    
-                case .failure(let error):
-                    continuation.resume(throwing: error)
-                }
-            }
-        }
-    }
+    case photoSearch(photoTitle: String)
 }
 
 
 extension JsonPlaceholderAPI: TargetType {
     var baseURL: URL {
-        if let url = URL(string: "https://jsonplaceholder.typicode.com") {
-            return url
-        } else {
-            return URL(string: "")!
-        }
+        return URL(string: "https://jsonplaceholder.typicode.com")!
     }
     
     var path: String {
@@ -63,7 +29,7 @@ extension JsonPlaceholderAPI: TargetType {
             return "/users/\(id)"
         case .albumes(_):
             return "/albums"
-        case .photos(_):
+        case .photos(_), .photoSearch(_):
             return "/photos"
         }
     }
@@ -80,6 +46,8 @@ extension JsonPlaceholderAPI: TargetType {
             return .requestParameters(parameters: ["userId": userId], encoding: URLEncoding.queryString)
         case .photos(let albumId):
             return .requestParameters(parameters: ["albumId": albumId], encoding: URLEncoding.queryString)
+        case .photoSearch(let photoTitle):
+            return .requestParameters(parameters: ["title": photoTitle], encoding: URLEncoding.queryString)
         }
     }
     
